@@ -19,7 +19,6 @@ export default function Header() {
           alignItems="center"
           py={2}
         >
-          {/* Logo */}
           <Link href="/">
             <Image
               src="https://websitedemos.net/saas-app-company-04/wp-content/uploads/sites/1180/2023/02/logo-retina.png"
@@ -31,14 +30,12 @@ export default function Header() {
             />
           </Link>
 
-          {/* Hamburger for screens < 700px */}
           <Box className="block max-[700px]:block hidden">
             <IconButton onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
           </Box>
 
-          {/* Full nav for screens >= 700px */}
           <Box
             component="nav"
             className="hidden min-[700px]:flex gap-10 text-gray-700 font-medium text-base"
@@ -61,7 +58,6 @@ export default function Header() {
           </Box>
         </Box>
 
-        {/* Mobile nav menu below 700px */}
         {menuOpen && (
           <Box className="flex flex-col gap-4 pt-4 text-center max-[700px]:flex min-[700px]:hidden">
             <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
