@@ -1,9 +1,9 @@
 import React from 'react'
+import Footer from '../../components/Footer'
 
-function page() {
+export default function page() {
   return (
-    <div>page</div>
+    <Footer/>
+
   )
 }
-
-export default page
