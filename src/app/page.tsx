@@ -1,9 +1,9 @@
 import React from 'react'
-
-function page() {
+import Header from '../../components/Header'
+export default function page() {
   return (
-    <div>page</div>
+    <div>
+      <Header/>
+    </div>
   )
 }
-
-export default page
