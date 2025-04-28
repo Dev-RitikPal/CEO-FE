@@ -1,14 +1,38 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { Box, Container, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { useState } from "react";
+import { Box, Container, IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const NavList = [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Products", href: "/products" },
+    { label: "Features", href: "/features" },
+    { label: "Contact", href: "/contact" },
+  ];
+
+  function RenderNavList() {
+    return (
+      <>
+        {NavList.map((item) => (
+          <Link
+            href={item.href}
+            className="hover:text-orange-400 transition"
+            key={item.label}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </>
+    );
+  }
 
   return (
     <Box component="header" className="shadow-sm sticky top-0 z-50 bg-white">
@@ -30,7 +54,7 @@ export default function Header() {
             />
           </Link>
 
-          <Box className="block max-[700px]:block hidden">
+          <Box className="block min-[700px]:hidden">
             <IconButton onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
@@ -40,31 +64,13 @@ export default function Header() {
             component="nav"
             className="hidden min-[700px]:flex gap-10 text-gray-700 font-medium text-base"
           >
-            <Link href="/" className="hover:text-orange-400 transition">
-              Home
-            </Link>
-            <Link href="/about" className="hover:text-orange-400 transition">
-              About Us
-            </Link>
-            <Link href="/products" className="hover:text-orange-400 transition">
-              Products
-            </Link>
-            <Link href="/features" className="hover:text-orange-400 transition">
-              Features
-            </Link>
-            <Link href="/contact" className="hover:text-orange-400 transition">
-              Contact
-            </Link>
+            {RenderNavList()}
           </Box>
         </Box>
 
         {menuOpen && (
-          <Box className="flex flex-col gap-4 pt-4 text-center max-[700px]:flex min-[700px]:hidden">
-            <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
-            <Link href="/about" onClick={() => setMenuOpen(false)}>About Us</Link>
-            <Link href="/products" onClick={() => setMenuOpen(false)}>Products</Link>
-            <Link href="/features" onClick={() => setMenuOpen(false)}>Features</Link>
-            <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+          <Box className="flex flex-col gap-4 pt-4 text-center min-[700px]:hidden">
+            {RenderNavList()}
           </Box>
         )}
       </Container>
