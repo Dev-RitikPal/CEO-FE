@@ -12,9 +12,9 @@ export default function Header() {
 
   const NavList = [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
+    { label: "About Us", href: "/about-us" },
     { label: "Products", href: "/products" },
-    { label: "Features", href: "/features" },
+    { label: "Services", href: "/services" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -24,7 +24,7 @@ export default function Header() {
         {NavList.map((item) => (
           <Link
             href={item.href}
-            className="hover:text-orange-400 transition"
+            className="text-[#32597DC4] hover:text-orange-400 transition"
             key={item.label}
           >
             {item.label}
@@ -35,7 +35,7 @@ export default function Header() {
   }
 
   return (
-    <Box component="header" className="shadow-sm sticky top-0 z-50 bg-white">
+    <Box component="header" className="top-0 z-50">
       <Container maxWidth="lg">
         <Box
           display="flex"
